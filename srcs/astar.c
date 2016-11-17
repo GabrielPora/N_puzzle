@@ -17,7 +17,7 @@ void astar(t_env *env)
 	t_closed_tree closed;
 	t_closed_tree opened_tree;
 	t_state_list *opened = NULL;
-	t_state *best_state;
+	t_state *best_state = NULL;
 	t_state_list *expend;
 	t_state_list *tmp;
 	t_state *tmp_nei;
