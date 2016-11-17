@@ -1,40 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   manhattan.c                                        :+:      :+:    :+:   */
+/*   euclidean.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/14 17:27:52 by ggroener          #+#    #+#             */
-/*   Updated: 2016/11/14 17:27:53 by ggroener         ###   ########.fr       */
+/*   Created: 2016/11/17 08:44:30 by ggroener          #+#    #+#             */
+/*   Updated: 2016/11/17 08:44:33 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "npuzzle.h"
 
-static int get_diff(t_env *env, t_state *state, int ax, int ay, int val)
+static void get_diff(t_env *env, t_state *state, int ax, int ay, int val, double *dx, int *dy)
 {
+	(void)dy;
 	for (int y = 0; y < env->size; ++y)
 	{
 		for (int x = 0; x < env->size; ++x)
 		{
 			if (state->puzzle[y][x] == val)
-				return (abs(x - ax) + abs(y - ay));
+			{
+				*dx += sqrt(pow(abs(x - ax), 2) + pow(abs(y - ay), 2));
+				return;
+			}
 		}
 	}
-	return (0);
 }
 
-int manhattan(t_env *env, t_state *s1, t_state *s2)
+int euclidean(t_env *env, t_state *s1, t_state *s2)
 {
-	int total = 0;
+	double dx = 0;
+	int dy = 0;
 
 	for (int y = 0; y < env->size; ++y)
 	{
 		for (int x = 0; x < env->size; ++x)
 		{
-			total += get_diff(env, s2, x, y, s1->puzzle[y][x]);
+			get_diff(env, s2, x, y, s1->puzzle[y][x], &dx, &dy);
 		}
 	}
-	return (total);
+	return (dx);
 }

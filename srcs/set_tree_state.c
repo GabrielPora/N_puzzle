@@ -1,43 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove_list_state.c                                :+:      :+:    :+:   */
+/*   set_tree_state.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/15 06:46:57 by ggroener          #+#    #+#             */
-/*   Updated: 2016/11/15 06:46:57 by ggroener         ###   ########.fr       */
+/*   Created: 2016/11/15 14:24:25 by ggroener          #+#    #+#             */
+/*   Updated: 2016/11/15 14:24:25 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "npuzzle.h"
 
-void remove_list_state(t_state_list **lst, t_state *state)
+void	set_tree_state(t_env *env, t_tree_state *tree, t_state *state, int opened)
 {
-	t_state_list *tmp;
-	t_state_list *ite;
-	t_state_list *prv;
+	t_tree_state *lst;
+	int size = env->size * env->size;
+	int i = 0;
 
-	if (!(*lst))
-		return;
-	if ((*lst)->state == state)
+	lst = tree;
+	while (i < size)
 	{
-		tmp = *lst;
-		*lst = (*lst)->next;
-		free(tmp);
-		return;
-	}
-	ite = *lst;
-	prv = NULL;
-	while (ite)
-	{
-		if (ite->state == state)
+		lst = lst->child[state->puzzle[i / env->size][i % env->size]];
+		if (!lst)
 		{
-			prv->next = ite->next;
-			free(ite);
-			return;
+			ft_putendl("FAILED Damn!");
+			exit(EXIT_FAILURE);
+			return ;
 		}
-		prv = ite;
-		ite = ite->next;
+		++i;
 	}
+	lst->opened = opened;
 }

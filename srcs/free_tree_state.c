@@ -1,43 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove_list_state.c                                :+:      :+:    :+:   */
+/*   free_tree_state.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/15 06:46:57 by ggroener          #+#    #+#             */
-/*   Updated: 2016/11/15 06:46:57 by ggroener         ###   ########.fr       */
+/*   Created: 2016/11/17 08:44:54 by ggroener          #+#    #+#             */
+/*   Updated: 2016/11/17 08:44:55 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "npuzzle.h"
 
-void remove_list_state(t_state_list **lst, t_state *state)
+void free_tree_state(t_env *env, t_tree_state *node)
 {
-	t_state_list *tmp;
-	t_state_list *ite;
-	t_state_list *prv;
+	int size = env->size * env->size;
+	int i = 0;
 
-	if (!(*lst))
-		return;
-	if ((*lst)->state == state)
+	while (i < size)
 	{
-		tmp = *lst;
-		*lst = (*lst)->next;
-		free(tmp);
-		return;
+		if (node->child[i])
+			free_tree_state(env, node->child[i]);
+		free(node->child[i]);
+		++i;
 	}
-	ite = *lst;
-	prv = NULL;
-	while (ite)
-	{
-		if (ite->state == state)
-		{
-			prv->next = ite->next;
-			free(ite);
-			return;
-		}
-		prv = ite;
-		ite = ite->next;
-	}
+	free(node->child);
+	if (node->state)
+		free_state(env, node->state);
 }

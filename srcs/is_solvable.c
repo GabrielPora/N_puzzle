@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   is_solvable.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/14 15:22:44 by ggroener          #+#    #+#             */
+/*   Updated: 2016/11/14 15:22:45 by ggroener         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "npuzzle.h"
 
-static void fill_numbers(t_env *env, int **puzzle, int *numbers)
+static void	fill_numbers(t_env *env, unsigned short **puzzle, unsigned short *numbers)
 {
-	int y;
-	int x;
-	int i;
+	int	y;
+	int	x;
+	int	i;
 
 	i = 0;
 	y = 0;
@@ -20,11 +32,11 @@ static void fill_numbers(t_env *env, int **puzzle, int *numbers)
 	}
 }
 
-static int get_inversions(t_env *env, int *numbers)
+static int	get_inversions(t_env *env, unsigned short *numbers)
 {
-	int total;
-	int i;
-	int j;
+	int	total;
+	int	i;
+	int	j;
 
 	i = 0;
 	total = 0;
@@ -47,7 +59,7 @@ static int get_inversions(t_env *env, int *numbers)
 	return (total);
 }
 
-static int blank_line(t_env *env, int *tab)
+static int	blank_line(t_env *env, unsigned short *tab)
 {
 	int i;
 
@@ -63,12 +75,12 @@ static int blank_line(t_env *env, int *tab)
 	return (0);
 }
 
-int is_solvable(t_env *env)
+int			is_solvable(t_env *env)
 {
 	int end_inversions;
-	int *end_tab;
+	unsigned short *end_tab;
 	int start_inversions;
-	int *start_tab;
+	unsigned short *start_tab;
 
 	if (!(start_tab = malloc(sizeof(*start_tab) * (env->size * env->size))))
 	{

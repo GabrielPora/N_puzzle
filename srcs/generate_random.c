@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   generate_random.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/14 15:20:15 by ggroener          #+#    #+#             */
+/*   Updated: 2016/11/14 15:20:16 by ggroener         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "npuzzle.h"
 
-static void swap(int **puzzle, int x1, int y1, int x2, int y2)
+static void swap(unsigned short **puzzle, int x1, int y1, int x2, int y2)
 {
 	int tmp;
 
@@ -9,7 +21,7 @@ static void swap(int **puzzle, int x1, int y1, int x2, int y2)
 	puzzle[y2][x2] = tmp;
 }
 
-static void shuffle(t_env *env, int **puzzle)
+static void shuffle(t_env *env, unsigned short **puzzle)
 {
 	int x;
 	int y;
@@ -56,7 +68,7 @@ void generate_random(t_env *env)
 		i++;
 	}
 	i = 0;
-	while (i < env->size * (1 + rand() / (float)RAND_MAX * 2))
+	while (i < env->size * (1 + rand() / (float)RAND_MAX * 2)) // making sure that it doesn't go out of range
 	{
 		shuffle(env, env->start->puzzle);
 		i++;

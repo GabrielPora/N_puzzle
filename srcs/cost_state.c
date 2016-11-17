@@ -12,7 +12,7 @@
 
 #include "npuzzle.h"
 
-int cost_state(t_state *old, t_state *new)
+int	cost_state(t_state *old, t_state *new)
 {
 	(void)old;
 	(void)new;

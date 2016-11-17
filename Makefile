@@ -12,46 +12,48 @@
 
 NAME = npuzzle
 
-CC = gcc
+CFLAGS = -Wall -Wextra -Werror -g -Ofast -flto -march=native -g
 
-CFLAGS = -Wall -Wextra -Werror -Ofast -flto -march=native -g
+CC = gcc
 
 INCLUDES_PATH = includes/
 
 SRCS_PATH = srcs/
 
-SRCS_NAME = main.c \
-			get_next_line.c \
-			read_file.c \
-			valid_int.c \
-			dump_state.c \
-			push_list_state.c \
-			remove_list_state.c \
-			astar.c \
-			new_state.c \
-			build_end.c \
-			new_size_state.c \
-			equals_state.c \
-			list_contents_state.c \
-			free_list_state.c \
-			free_state.c \
-			get_list_state.c \
-			expend_state.c \
-			copy_state.c \
-			manhattan.c \
-			generate_random.c \
-			is_solvable.c \
-			timing.c \
-			print_solution.c \
-			size_list_state.c \
-			misplaced.c \
-			row_column.c \
-			cal_score_state.c \
-			cost_state.c \
-			push_closed_tree.c \
-			get_closed_tree.c \
-			remove_closed_tree.c \
-			get_score.c \
+SRCS_NAME = main.c 					\
+			get_next_line.c 		\
+			read_file.c 			\
+			valid_int.c 			\
+			dump_state.c 			\
+			push_list_state.c 		\
+			remove_list_state.c 	\
+			astar.c 				\
+			new_state.c 			\
+			build_end.c 			\
+			new_size_state.c 		\
+			equals_state.c 			\
+			list_contents_state.c 	\
+			free_list_state.c 		\
+			free_state.c 			\
+			expend_state.c 			\
+			copy_state.c 			\
+			manhattan.c 			\
+			generate_random.c 		\
+			is_solvable.c 			\
+			timing.c 				\
+			print_solution.c 		\
+			size_list_state.c 		\
+			misplaced.c 			\
+			row_column.c 			\
+			cal_score_state.c 		\
+			cost_state.c 			\
+			get_list_state.c 		\
+			push_tree_state.c 		\
+			get_tree_state.c 		\
+			set_tree_state.c 		\
+			free_tree_state.c 		\
+			get_score.c 			\
+			euclidean.c 			\
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 

@@ -12,7 +12,7 @@
 
 #include "npuzzle.h"
 
-static void insert(t_state_list **list, t_state_list *lst, t_state_list *prv, t_state_list *crt)
+static void	insert(t_state_list **list, t_state_list *lst, t_state_list *prv, t_state_list *crt)
 {
 	if (!prv)
 	{
@@ -27,7 +27,7 @@ static void insert(t_state_list **list, t_state_list *lst, t_state_list *prv, t_
 	}
 }
 
-static void push(t_state_list **list, t_state_list *state)
+static void	push(t_state_list **list, t_state_list *state)
 {
 	t_state_list *prv;
 	t_state_list *lst;
@@ -36,7 +36,7 @@ static void push(t_state_list **list, t_state_list *state)
 	lst = *list;
 	while (lst)
 	{
-		if (state->state->f <= lst->state->f)
+		if (state->state->f <= lst->state->f) // this is better than previous one
 		{
 			insert(list, lst, prv, state);
 			return;
@@ -47,7 +47,7 @@ static void push(t_state_list **list, t_state_list *state)
 	prv->next = state;
 }
 
-void push_list_state(t_state_list **lst, t_state *state)
+void	push_list_state(t_state_list **lst, t_state *state)
 {
 	t_state_list *new;
 

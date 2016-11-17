@@ -14,38 +14,31 @@
 
 void astar(t_env *env)
 {
-	t_closed_tree closed;
-	t_closed_tree opened_tree;
+	t_tree_state state_tree; // added for better processing speed
 	t_state_list *opened = NULL;
 	t_state *best_state;
 	t_state_list *expend;
 	t_state_list *tmp;
-	t_state *tmp_nei;
-	int in_closed;
-	int complexity_time = 0;
-	int complexity_size = 0;
-	int success = 0;
-	int size_tmp;
+	t_state *tmp_state; // changed for better processing speed
+	int	in_closed;
+	int	complexity_time = 0;
+	int	complexity_size = 0;
+	int	success = 0;
+	int	size_tmp;
 	int opened_size = 0;
 	int closed_size = 0;
-	int tmpg;
+	int tmp_g;
+	int is_closed = 0;
 
-	ft_bzero(&closed, sizeof(closed));
-	if (!(closed.child = malloc(sizeof(*closed.child) * env->size * env->size)))
+	memset(&state_tree, 0, sizeof(state_tree));
+	if (!(state_tree.child = malloc(sizeof(*state_tree.child) * env->size * env->size)))
 	{
 		ft_putendl_fd("nuzzle: malloc failed", 2);
 		exit(EXIT_FAILURE);
 	}
-	ft_bzero(closed.child, sizeof(*closed.child) * env->size * env->size);
-	ft_bzero(&opened_tree, sizeof(opened_tree));
-	if (!(opened_tree.child = malloc(sizeof(*opened_tree.child) * env->size * env->size)))
-	{
-		ft_putendl_fd("npuzzle: malloc failed", 2);
-		exit(EXIT_FAILURE);
-	}
-	ft_bzero(opened_tree.child, sizeof(*opened_tree.child) * env->size *env->size);
+	memset(state_tree.child, 0, sizeof(*state_tree.child) * env->size * env->size);
 	push_list_state(&opened, env->start);
-	push_closed_tree(env, &opened_tree, env->start);
+	push_tree_state(env, &state_tree, env->start, 1); // added for better processing speed
 	if ((size_tmp = opened_size + closed_size) > complexity_size)
 	{
 		complexity_size = size_tmp;
@@ -59,13 +52,12 @@ void astar(t_env *env)
 			success = 1;
 			break;
 		}
-		tmp = opened;
-		opened = opened->next;
-		free(tmp);
-		opened_size--;
-		remove_closed_tree(env, &opened_tree, best_state);
-		push_closed_tree(env, &closed, best_state);
-		closed_size++;
+		tmp = opened; // added for better processing speed
+		opened = opened->next; // added for better processing speed
+		free(tmp); // added for better processing speed
+		opened_size--; // decrement the number of open blocks
+		closed_size++; // increment the number of closed blocks
+		set_tree_state(env, &state_tree, best_state, 0);
 		expend = expend_state(env, best_state);
 		if ((size_tmp = opened_size + closed_size + size_list_state(expend)) > complexity_size)
 		{
@@ -73,55 +65,66 @@ void astar(t_env *env)
 		}
 		while (expend)
 		{
-			in_closed = get_closed_tree(env, &closed, expend->state) != NULL;
+			tmp_state = get_tree_state(env, &state_tree, expend->state, &is_closed);
+			in_closed = tmp_state != NULL && is_closed;
 			if (in_closed)
 			{
 				tmp = expend;
 				expend = expend->next;
+				free_state(env, tmp->state);
 				free(tmp);
 				continue;
 			}
-			tmpg = best_state->g + 1;
-			tmp_nei = get_closed_tree(env, &opened_tree, expend->state);
-			if (!tmp_nei)
+			tmp_g = best_state->g + 1;
+			if (!tmp_state)
 			{
 				expend->state->pred = best_state;
-				expend->state->g = tmpg;
-				expend->state->f = expend->state->g + expend->state->h;
+				expend->state->g = tmp_g;
+				expend->state->f = 0;
+				if (!env->greedy)
+					expend->state->f += expend->state->g;
+				if (!env->uniform)
+					expend->state->f += expend->state->h;
 				push_list_state(&opened, expend->state);
-				push_closed_tree(env, &opened_tree, expend->state);
+				push_tree_state(env, &state_tree, expend->state, 1);
 				opened_size++;
-			}
-			else if (tmpg >= tmp_nei->g)
-			{
 				tmp = expend;
 				expend = expend->next;
 				free(tmp);
 				continue;
 			}
-			else
+			else if (tmp_g >= tmp_state->g)
 			{
-				tmp_nei->pred = best_state;
-				tmp_nei->g = tmpg;
-				tmp_nei->f = tmp_nei->g + tmp_nei->h;
+				tmp = expend;
+				expend = expend->next;
+				free_state(env,tmp->state);
+				free(tmp);
+				continue;
 			}
+			tmp_state->pred = best_state;
+			tmp_state->g = tmp_g;
+			tmp_state->f = 0;
+			if (!env->greedy)
+				tmp_state->f += tmp_state->g;
+			if (!env->uniform)
+				tmp_state->f += tmp_state->h;
 			tmp = expend;
 			expend = expend->next;
+			free_state(env, tmp->state);
 			free(tmp);
 		}
-		free_list_state(expend);
 	}
 	if (success)
 	{
-		t_state *kek = best_state;
+		t_state *check = best_state;
 		int i = 0;
-		while (kek)
+		while (check) // added a better count number here to check what the best state.
 		{
 			++i;
-			kek = kek->pred;
+			check = check->pred;
 		}
 		setvbuf(stdout, NULL, _IOFBF, BUFSIZ);
-		printf("solution: ");
+		printf("solution: \n");
 		print_solution(env, best_state);
 		printf("time complexity: %d\nsize complexity: %d\nnumber of moves: %d\n", complexity_time, complexity_size, i);
 		fflush(stdout);
@@ -131,4 +134,6 @@ void astar(t_env *env)
 	{
 		ft_putendl("This puzzle is not solvable");
 	}
+	free_tree_state(env, &state_tree);
+	free_list_state(opened);
 }
