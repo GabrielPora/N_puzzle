@@ -3,36 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/11 08:48:25 by ggroener          #+#    #+#             */
-/*   Updated: 2016/05/14 10:01:45 by ggroener         ###   ########.fr       */
+/*   Created: 2016/05/10 11:16:01 by khansman          #+#    #+#             */
+/*   Updated: 2016/05/15 08:04:58 by khansman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int		ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-	int		sign;
-	int		res;
-	int		stop;
+	int		k;
+	int		neg;
+	int		num;
 
-	sign = 1;
-	res = 0;
-	stop = 0;
-	while (*str == '\t' || *str == '\v' || *str == '\n' || *str == '\r'
-			|| *str == '\f' || *str == ' ')
-		str++;
-	if (*str == '-' || *str == '+')
+	k = 0;
+	num = 0;
+	neg = 1;
+	while (str[k] == ' ' || str[k] == '\t' || str[k] == '\n' ||
+		str[k] == '\r' || str[k] == '\v' || str[k] == '\f')
+		k++;
+	if (str[k] == '-' || str[k] == '+')
 	{
-		sign = (*str == '-') ? -1 : 1;
-		str++;
+		neg = (str[k] == '-') ? -1 : 1;
+		k++;
 	}
-	while (*str && ft_isdigit(*str))
+	while ('0' <= str[k] && str[k] <= '9')
 	{
-		res = res * 10 + *str - '0';
-		str++;
+		num = (num * 10) + (str[k] - '0');
+		k++;
 	}
-	return (res * sign);
+	return (num * neg);
 }

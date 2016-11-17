@@ -3,34 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/13 10:53:25 by ggroener          #+#    #+#             */
-/*   Updated: 2016/05/13 17:11:57 by ggroener         ###   ########.fr       */
+/*   Created: 2016/05/09 15:22:40 by khansman          #+#    #+#             */
+/*   Updated: 2016/05/15 11:05:05 by khansman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	int		backward_nb;
+	char	c;
+	int		k;
 
-	backward_nb = 0;
-	if (n < 0)
+	if (n == 0)
+		write(fd, "0", 1);
+	else if (n < 0)
 	{
-		ft_putchar('-');
+		write(fd, "-", 1);
 		n = -n;
 	}
-	while (n > 10)
+	k = 1;
+	while (n % k != n)
+		k = 10 * k;
+	while (n > 0)
 	{
-		backward_nb *= 10;
-		backward_nb += n % 10;
-		n /= 10;
-	}
-	while (backward_nb > 0)
-	{
-		ft_putchar_fd('0' + (backward_nb % 10), fd);
-		backward_nb /= 10;
+		c = (n / (k / 10)) + '0';
+		n = n - ((n / (k / 10)) * (k / 10));
+		k = k / 10;
+		write(fd, &c, 1);
 	}
 }

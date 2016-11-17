@@ -3,59 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/14 07:48:08 by ggroener          #+#    #+#             */
-/*   Updated: 2016/05/14 07:53:54 by ggroener         ###   ########.fr       */
+/*   Created: 2016/05/15 15:57:41 by khansman          #+#    #+#             */
+/*   Updated: 2016/05/15 15:58:17 by khansman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	get_nbwords(char const *s, char c)
+static int	ft_tab_count(const char *str, char c)
 {
-	int	nb_words;
-	int	i;
+	int		k;
 
-	i = 0;
-	nb_words = 0;
-	while (s && *(s + i))
+	k = 1;
+	while (str)
 	{
-		while (*(s + i) && *(s + i) == c)
-			i++;
-		if (*(s + i))
-			nb_words++;
-		while (*(s + i) && *(s + i) != c)
-			i++;
+		str = ft_strchr(str, c);
+		while (str && *str == c)
+			++str;
+		if (!str || !*str)
+			return (k);
+		k++;
 	}
-	return (nb_words);
+	return (k);
 }
 
 char		**ft_strsplit(char const *s, char c)
 {
-	size_t	start;
-	size_t	end;
-	char	**ptr;
-	int		i;
+	char	**arr;
+	int		k;
+	char	*tmp;
+	char	**result;
 
-	start = 0;
-	end = 0;
-	i = 0;
-	ptr = NULL;
 	if (!s)
-		return (ptr);
-	ptr = (char **)ft_memalloc(sizeof(char *) * (get_nbwords(s, c) + 1));
-	while (get_nbwords(s, c) - i)
+		return (NULL);
+	while (*s == c)
+		++s;
+	if (!*s)
+		return ((char **)ft_strnew(sizeof(char *)));
+	k = ft_tab_count(s, c) + 1;
+	if (!(arr = (char **)ft_strnew((k) * sizeof(char *))))
+		return (NULL);
+	result = arr;
+	while (--k)
 	{
-		while (s && *(s + start) && *(s + start) == c)
-			start++;
-		while (s && *(s + start + end) && *(s + start + end) != c)
-			end++;
-		ptr[i] = ft_strsub(s, start, end);
-		start += end;
-		end = 0;
-		i++;
+		tmp = ft_strchr(s, c);
+		if (!tmp && (*(arr++) = ft_strdup(s)))
+			break ;
+		*(arr++) = ft_strsub(s, 0, tmp - s);
+		SKP_BLK;
+		s = tmp;
 	}
-	ptr[i] = NULL;
-	return (ptr);
+	return (result);
 }

@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_wstrlen.c                                       :+:      :+:    :+:   */
+/*   ft_printhex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acazuc <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/25 15:55:36 by acazuc            #+#    #+#             */
-/*   Updated: 2016/06/25 15:56:28 by acazuc           ###   ########.fr       */
+/*   Created: 2016/08/21 14:47:20 by khansman          #+#    #+#             */
+/*   Updated: 2016/08/21 14:47:22 by khansman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_wstrlen(wchar_t const *s)
+void	ft_print_hex(unsigned char num)
 {
-	size_t	len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
+	BASE_STR2;
+	if (num >= 16)
+		ft_print_hex(num / 16);
+	write(1, (base + (num % 16)), 1);
 }

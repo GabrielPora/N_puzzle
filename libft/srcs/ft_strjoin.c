@@ -3,29 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/14 07:41:18 by ggroener          #+#    #+#             */
-/*   Updated: 2016/05/21 11:30:07 by ggroener         ###   ########.fr       */
+/*   Created: 2016/05/09 11:55:29 by khansman          #+#    #+#             */
+/*   Updated: 2016/05/21 11:05:59 by khansman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char		*ft_strjoin(char const *s1, char const *s2)
 {
-	int		size;
-	char	*re;
-	int		i;
+	char	*temp;
+	int		k;
 
-	size = ft_strlen(s1) + ft_strlen(s2) + 1;
-	if (!(re = (char *)malloc((sizeof(char) * size))))
+	if (!s1 && s2)
+		return (ft_strdup(s2));
+	else if (s1 && !s2)
+		return (ft_strdup(s1));
+	else if (!s1 && !s2)
 		return (NULL);
-	i = 0;
-	while (*s1 && i < size)
-		re[i++] = *s1++;
-	while (*s2 && i < size)
-		re[i++] = *s2++;
-	re[i] = '\0';
-	return (re);
+	if (!(temp = ft_strnew(ft_strlen(s1) + ft_strlen(s2) + 1)))
+		return (NULL);
+	k = -1;
+	while (*s1)
+		temp[++k] = *(s1++);
+	while (*s2)
+		temp[++k] = *(s2++);
+	return (temp);
 }

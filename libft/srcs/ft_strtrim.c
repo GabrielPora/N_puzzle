@@ -3,33 +3,73 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/14 07:45:15 by ggroener          #+#    #+#             */
-/*   Updated: 2016/05/22 15:35:07 by ggroener         ###   ########.fr       */
+/*   Created: 2016/05/09 12:07:42 by khansman          #+#    #+#             */
+/*   Updated: 2016/05/15 17:47:39 by khansman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s)
+static char	*ft_strtrim_start(char *s)
 {
-	size_t	start;
-	size_t	end;
-	size_t	len_s;
+	int		k;
+	int		l;
 
-	start = 0;
-	end = 0;
-	if (s)
-		len_s = ft_strlen(s);
-	while (s && *(s + start) && (*(s + start) == ' ' || *(s + start) == '\n'\
-				|| *(s + start) == '\t'))
-		start++;
-	while (s && end < len_s && (*(s + len_s - 1 - end) == ' '\
-				|| *(s + len_s - 1 - end) == '\n'\
-				|| *(s + len_s - 1 - end) == '\t'))
-		end++;
-	if ((int)(len_s - end - start) < 0)
-		return (ft_strsub(s, start, 0));
-	return (ft_strsub(s, start, len_s - end - start));
+	k = 0;
+	l = 0;
+	while (s[k] == '\t' || s[k] == '\n' || s[k] == ' ')
+		k++;
+	while (s[k] != '\0')
+	{
+		s[l] = s[k];
+		k++;
+		l++;
+	}
+	s[l] = '\0';
+	return (s);
+}
+
+static char	*ft_str_rev(char *s)
+{
+	int		k;
+	int		l;
+	char	temp;
+
+	k = 0;
+	l = -1;
+	while (s[l + 1] != '\0')
+		l++;
+	while (l > k)
+	{
+		temp = s[k];
+		s[k] = s[l];
+		s[l] = temp;
+		l--;
+		k++;
+	}
+	return (s);
+}
+
+char		*ft_strtrim(char const *s)
+{
+	char	*temp;
+	int		k;
+
+	if (!s)
+		return (NULL);
+	k = 0;
+	if (!(temp = (char *)malloc(ft_strlen(s) + 1)))
+		return (NULL);
+	while (s[k] != '\0')
+	{
+		temp[k] = s[k];
+		k++;
+	}
+	temp[k] = '\0';
+	temp = ft_strtrim_start(temp);
+	temp = ft_strtrim_start(ft_str_rev(temp));
+	temp = ft_str_rev(temp);
+	return (temp);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdel.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/13 10:38:39 by ggroener          #+#    #+#             */
-/*   Updated: 2016/05/21 11:43:06 by ggroener         ###   ########.fr       */
+/*   Created: 2016/05/14 13:15:10 by khansman          #+#    #+#             */
+/*   Updated: 2016/08/13 09:16:17 by khansman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,19 @@
 
 char	*ft_strdup(const char *s1)
 {
-	char	*dup;
-	int		i;
+	size_t	k;
+	char	*copy;
 
-	i = 0;
-	dup = ft_strnew(ft_strlen((char *)s1));
-	while (s1[i] != '\0')
+	k = 0;
+	while (s1[k] != '\0')
+		k++;
+	if (!(copy = malloc(k + 1)))
+		return (NULL);
+	while (k > 0)
 	{
-		dup[i] = s1[i];
-		i++;
+		copy[k] = s1[k];
+		k--;
 	}
-	return (dup);
+	*copy = *s1;
+	return (copy);
 }

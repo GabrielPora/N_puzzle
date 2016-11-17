@@ -3,33 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/14 11:13:25 by ggroener          #+#    #+#             */
-/*   Updated: 2016/05/22 15:31:51 by ggroener         ###   ########.fr       */
+/*   Created: 2016/05/10 07:23:21 by khansman          #+#    #+#             */
+/*   Updated: 2016/05/15 10:46:44 by khansman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <string.h>
 
-void	*ft_memccpy(void *s1, const void *s2, int c, size_t n)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	unsigned char		*tmp_s1;
-	unsigned const char	*tmp_s2;
+	size_t	k;
+	void	*ptr;
+	char	*s;
+	char	*d;
 
-	tmp_s1 = s1;
-	tmp_s2 = s2;
-	while (n-- != 0)
+	k = 0;
+	s = (char *)src;
+	d = (char *)dst;
+	while (k < n)
 	{
-		if (*tmp_s2 != (unsigned char)c)
+		d[k] = s[k];
+		if (s[k] == c)
 		{
-			*tmp_s1++ = *tmp_s2++;
+			ptr = (void *)&d[k + 1];
+			return (ptr);
 		}
-		else
-		{
-			*tmp_s1++ = *tmp_s2++;
-			return (tmp_s1);
-		}
+		k++;
 	}
 	return (NULL);
 }

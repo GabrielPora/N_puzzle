@@ -118,7 +118,7 @@ void read_file(t_env *env, char *file)
 		ft_putendl_fd("npuzzle: can't open puzzle file", 2);
 		exit(EXIT_FAILURE);
 	}
-	while (ft_strlen((line = get_next_line(fd))) > 0)
+	while (ft_strlen((line = get_next_line2(fd))) > 0)
 	{
 		if ((tmp = ft_strchr(line, '#')))
 			tmp[0] = '\0';

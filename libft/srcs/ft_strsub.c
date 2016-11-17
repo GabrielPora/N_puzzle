@@ -3,34 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/14 07:38:14 by ggroener          #+#    #+#             */
-/*   Updated: 2016/05/21 11:36:44 by ggroener         ###   ########.fr       */
+/*   Created: 2016/05/09 11:37:27 by khansman          #+#    #+#             */
+/*   Updated: 2016/05/15 11:26:42 by khansman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char	*re;
-	int		i;
+	char			*temp;
+	unsigned int	k;
 
-	i = 0;
-	re = ft_strnew(len + 1);
-	if (re == NULL)
+	k = start;
+	if (s == NULL || len == 0)
 		return (NULL);
-	len = len + start;
-	if (start < ft_strlen(s))
+	if (!(temp = (char *)malloc(len)))
+		return (NULL);
+	while ((k < len + start) && s[k] != '\0')
 	{
-		while (s[start] != '\0' && start < len)
-		{
-			re[i] = s[start];
-			start++;
-			i++;
-		}
+		temp[k - start] = s[k];
+		k++;
 	}
-	re[i] = '\0';
-	return (re);
+	temp[k] = '\0';
+	return (temp);
 }

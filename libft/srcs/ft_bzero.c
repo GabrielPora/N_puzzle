@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   bzero.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/11 12:12:24 by ggroener          #+#    #+#             */
-/*   Updated: 2016/05/11 16:31:04 by ggroener         ###   ########.fr       */
+/*   Created: 2016/05/09 08:13:31 by khansman          #+#    #+#             */
+/*   Updated: 2016/08/21 10:45:17 by khansman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <string.h>
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char	*temp;
+	size_t	k;
+	char	*temp;
 
-	temp = s;
-	while (n-- != 0)
+	k = 0;
+	temp = (char *)s;
+	temp = (char *)s;
+	while (k < n)
 	{
-		*temp = 0;
-		temp++;
+		temp[k] = '\0';
+		k++;
 	}
 }

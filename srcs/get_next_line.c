@@ -1,6 +1,6 @@
 #include "npuzzle.h"
 
-char *get_next_line(int fd)
+char *get_next_line2(int fd)
 {
 	ssize_t readed;
 	char *result;

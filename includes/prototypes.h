@@ -13,7 +13,7 @@
 #ifndef PROTOTYPES_H
 # define PROTOTYPES_H
 
-char			*get_next_line(int fd);
+char			*get_next_line2(int fd);
 void			read_file(t_env *env, char *file);
 int				valid_int(char *str);
 void			dump_puzzle(t_env *env, int **puzzle);
