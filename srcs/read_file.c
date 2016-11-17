@@ -21,6 +21,7 @@ static void alloc_puzzle(t_env *env)
 		ft_putendl_fd("npuzzle: failed to malloc puzzle", 2);
 		exit(EXIT_FAILURE);
 	}
+	ft_bzero(env->start->puzzle, (sizeof(*env->start->puzzle) * env->size));
 	i = 0;
 	while (i < env->size)
 	{
@@ -29,6 +30,7 @@ static void alloc_puzzle(t_env *env)
 			ft_putendl_fd("npuzzle: failed to malloc puzzle", 2);
 			exit(EXIT_FAILURE);
 		}
+		ft_bzero(env->start->puzzle[i], (sizeof(**env->start->puzzle) * env->size));
 		i++;
 	}
 }

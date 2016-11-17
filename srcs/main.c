@@ -4,7 +4,7 @@ int main(int argc, char **argv)
 {
 	t_env env;
 
-	ft_bzero(&env, sizeof(env));
+	ft_bzero(&env, sizeof(t_env));
 	srand(timing());
 	if (argc < 3)
 	{

@@ -21,6 +21,7 @@ t_state *new_state()
 		ft_putendl_fd("npuzzle: failed to malloc new state", 2);
 		exit(EXIT_FAILURE);
 	}
+	ft_bzero(state, sizeof(*state));
 	state->pred = NULL;
 	state->g = 0;
 	return (state);

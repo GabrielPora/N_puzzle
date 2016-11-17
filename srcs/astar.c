@@ -30,20 +30,20 @@ void astar(t_env *env)
 	int closed_size = 0;
 	int tmpg;
 
-	ft_bzero(&closed, sizeof(closed));
+	ft_bzero(&closed, sizeof(t_closed_tree));
 	if (!(closed.child = malloc(sizeof(*closed.child) * env->size * env->size)))
 	{
 		ft_putendl_fd("nuzzle: malloc failed", 2);
 		exit(EXIT_FAILURE);
 	}
 	ft_bzero(closed.child, sizeof(*closed.child) * env->size * env->size);
-	ft_bzero(&opened_tree, sizeof(opened_tree));
+	ft_bzero(&opened_tree, sizeof(t_closed_tree));
 	if (!(opened_tree.child = malloc(sizeof(*opened_tree.child) * env->size * env->size)))
 	{
 		ft_putendl_fd("npuzzle: malloc failed", 2);
 		exit(EXIT_FAILURE);
 	}
-	ft_bzero(opened_tree.child, sizeof(*opened_tree.child) * env->size *env->size);
+	ft_bzero(opened_tree.child, (sizeof(*opened_tree.child) * env->size * env->size));
 	push_list_state(&opened, env->start);
 	push_closed_tree(env, &opened_tree, env->start);
 	if ((size_tmp = opened_size + closed_size) > complexity_size)

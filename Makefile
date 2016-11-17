@@ -14,7 +14,7 @@ NAME = npuzzle
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -Ofast -flto -march=native -g
+CFLAGS = -Wall -Wextra -Werror -Ofast -flto -march=native -g3 -g
 
 INCLUDES_PATH = includes/
 
