@@ -25,7 +25,7 @@ int		main(int argc, char **argv)
 	t_env	env;
 	int i = 1;
 
-	//ft_bzero(&env, sizeof(env)); // this is to avoid segfaults
+	//ft_bzero(&env, sizeof(t_env)); // this is to avoid segfaults
 	memset(&env, 0, sizeof(env)); // this is to avoid segfaults 
 	srand(timing());
 	if (argc < 3)
