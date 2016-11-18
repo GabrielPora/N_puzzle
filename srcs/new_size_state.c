@@ -22,6 +22,7 @@ t_state *new_size_state(t_env *env)
 		ft_putendl_fd("npuzzle: failed to malloc new state puzzle", 2);
 		exit(EXIT_FAILURE);
 	}
+	ft_bzero(state->puzzle, sizeof(*state->puzzle) * env->size);
 	//int i = 0;
 	// if you want to use the while then uncomment the commented code
 	for (int i = 0; i < env->size; i++)//while (i < env->size)
@@ -31,6 +32,7 @@ t_state *new_size_state(t_env *env)
 			ft_putendl_fd("npuzzle: failed to malloc new state puzzle", 2);
 			exit(EXIT_FAILURE);
 		}
+		ft_bzero(state->puzzle[i], sizeof(*state->puzzle[i]) * env->size);
 		//int j = 0;
 		for (int j = 0; j < env->size; j++)//while (j < env->size)
 		{

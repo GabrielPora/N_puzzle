@@ -98,7 +98,6 @@ int		main(int argc, char **argv)
  	}
  	else
 	{
-
  		read_file(&env, argv[++i]);
 		if (env.size < 2 || env.size > 255)
 		{			
@@ -122,7 +121,7 @@ int		main(int argc, char **argv)
 	cal_score_state(&env, env.end);
 	cal_score_state(&env, env.start);
  	//ft_putendl("\nend:");
- 	printf("\nend\n:");
+ 	printf("\nend:\n");
  	dump_state(&env, env.end);
  	//ft_putchar('\n');
  	printf("\n");

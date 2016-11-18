@@ -87,6 +87,7 @@ int			is_solvable(t_env *env)
 		ft_putendl_fd("npuzzle: can't malloc", 2);
 		exit(EXIT_FAILURE);
 	}
+	ft_bzero(start_tab, sizeof(*start_tab) * (env->size * env->size));
 	fill_numbers(env, env->start->puzzle, start_tab);
 	start_inversions = get_inversions(env, start_tab);
 	if (!(end_tab = malloc(sizeof(*end_tab) * (env->size * env->size))))
@@ -94,6 +95,7 @@ int			is_solvable(t_env *env)
 		ft_putendl_fd("npuzzle: can't malloc", 2);
 		exit(EXIT_FAILURE);
 	}
+	ft_bzero(end_tab, sizeof(*end_tab) * (env->size * env->size));
 	fill_numbers(env, env->end->puzzle, end_tab);
 	end_inversions = get_inversions(env, end_tab);
 	if (env->size % 2 == 0)

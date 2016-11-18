@@ -24,14 +24,16 @@ char *get_next_line(int fd)
 		fprintf(stderr, "npuzzle: can't malloc");
 		exit(EXIT_FAILURE);
 	}
-	memset(buff, 0, 2);
+	ft_bzero(buff, 2);
+	//memset(buff, 0, 2);
 	if (!(result = malloc(sizeof(*result))))
 	{
 		//ft_putendl_fd("npuzzle: can't malloc", 2);
 		fprintf(stderr, "npuzzle: can't malloc");
 		exit(EXIT_FAILURE);
 	}
-	memset(result, 0, 1);
+	ft_bzero(result, 1);
+	//memset(result, 0, 1);
 	while ((readed = read(fd, buff, 1)) > 0)
 	{
 		if (buff[0] == '\n')

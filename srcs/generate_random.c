@@ -51,6 +51,7 @@ void generate_random(t_env *env)
 		ft_putendl_fd("npuzzle: failed to malloc", 2);
 		exit(EXIT_FAILURE);
 	}
+	ft_bzero(env->start->puzzle, sizeof(*env->start->puzzle) * env->size);
 	int i = 0;
 	while (i < env->size)
 	{
@@ -59,6 +60,7 @@ void generate_random(t_env *env)
 			ft_putendl_fd("npuzzle: failed to malloc", 2);
 			exit(EXIT_FAILURE);
 		}
+		ft_bzero(env->start->puzzle[i], sizeof(*env->start->puzzle[i]) * env->size);
 		int j = 0;
 		while (j < env->size)
 		{
