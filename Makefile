@@ -16,7 +16,7 @@ CC = g++
 
 CFLAGS = -Wall -Wextra -Werror -Ofast -flto -march=native -g3 -g
 
-CFLAGS2 = -ltermcap
+CFLAGS2 = -ltermcap -g3 -g
 
 INCLUDES_PATH = includes/
 
