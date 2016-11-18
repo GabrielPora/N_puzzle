@@ -25,7 +25,7 @@ int main(int argc, char **argv)
 	env.start = new_state();
 	if (!ft_strcmp(argv[2], "--random"))
 	{
-		if (argc < 3)
+		if (argc < 4)
 		{
 			ft_putendl_fd("npuzzle: use:\nnpuzzle <--manhattan | --misplaced | --row_column> --random size", 2);
 			exit(EXIT_FAILURE);
