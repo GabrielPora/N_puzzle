@@ -25,7 +25,7 @@ void astar(t_env *env)
 	int complexity_time = 0;
 	int complexity_size = 0;
 	int success = 0;
-	int size_tmp;
+	int size_tmp = 0;
 	int opened_size = 0;
 	int closed_size = 0;
 	int tmpg;
