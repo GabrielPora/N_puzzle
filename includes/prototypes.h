@@ -46,4 +46,8 @@ void			push_closed_tree(t_env *env, t_closed_tree *tree, t_state *state); //tree
 t_state			*get_closed_tree(t_env *env, t_closed_tree *tree, t_state *state); //tree calls
 void			remove_closed_tree(t_env *env, t_closed_tree *tree, t_state *state); //tree calls
 
+void			print_fd(string str, int fd);
+void			print(string str);
+void			listener(void);
+
 #endif

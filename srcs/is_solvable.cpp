@@ -47,14 +47,14 @@ static int get_inversions(t_env *env, int *numbers)
 	return (total);
 }
 
-static int blank_line(t_env *env, int *tab)
+static int blank_line(t_env *env, int *t)
 {
 	int i;
 
 	i = 0;
 	while (i < env->size * env->size)
 	{
-		if (tab[i] == 0)
+		if (t[i] == 0)
 		{
 			return (i / env->size);
 		}

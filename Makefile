@@ -14,7 +14,7 @@ NAME = npuzzle
 
 CC = g++
 
-CFLAGS = -Wall -Wextra -Werror -Ofast -flto -march=native -g3 -g
+CFLAGS = -ltermcap -Ofast -flto -march=native -g3 -g
 
 INCLUDES_PATH = includes/
 
@@ -52,6 +52,8 @@ SRCS_NAME = main.cpp \
 			get_closed_tree.cpp \
 			remove_closed_tree.cpp \
 			get_score.cpp \
+			cpp_libft.cpp \
+			term.cpp \
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 

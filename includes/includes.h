@@ -20,4 +20,10 @@
 # include <sys/time.h>
 # include <stdio.h>
 
+# include <signal.h>
+# include <errno.h>
+# include <ctype.h>
+# include <termios.h>
+# include <term.h>
+
 #endif

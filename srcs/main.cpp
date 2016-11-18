@@ -5,6 +5,7 @@ int main(int argc, char **argv)
 	t_env env;
 
 	ft_bzero(&env, sizeof(t_env));
+	listener();
 	srand(timing());
 	if (argc < 3)
 	{
