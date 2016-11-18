@@ -33,8 +33,10 @@ int	ft_printf_nbr(int nb)
 
 int	ft_ptintf_str(char *str)
 {
+	std::string	tmp = "(NULL)";
+
 	if (str == NULL)
-		return (ft_printf_str("(NULL)"));
+		return (ft_printf_str((char *)tmp.c_str()));
 	ft_putstr(str);
 	return ((int)ft_strlen(str));
 }

@@ -49,20 +49,20 @@ static void push(t_state_list **list, t_state_list *state)
 
 void push_list_state(t_state_list **lst, t_state *state)
 {
-	t_state_list *new;
+	t_state_list *n;
 
-	if (!(new = malloc(sizeof(*new))))
+	if (!(n = (t_state_list *)malloc(sizeof(*n))))
 	{
 		ft_putendl_fd("npuzzle: failed to malloc new state elem", 2);
 		exit(EXIT_FAILURE);
 	}
-	ft_bzero(new, sizeof(*new));
-	new->next = NULL;
-	new->state = state;
+	ft_bzero(n, sizeof(*n));
+	n->next = NULL;
+	n->state = state;
 	if (*lst == NULL)
 	{
-		*lst = new;
+		*lst = n;
 		return;
 	}
-	push(lst, new);
+	push(lst, n);
 }

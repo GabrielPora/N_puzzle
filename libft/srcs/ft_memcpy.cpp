@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_wstrsub.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/24 15:17:16 by ggroener          #+#    #+#             */
-/*   Updated: 2016/06/25 15:59:12 by ggroener         ###   ########.fr       */
+/*   Created: 2016/05/11 12:15:07 by ggroener          #+#    #+#             */
+/*   Updated: 2016/05/14 07:55:17 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-wchar_t	*ft_wstrsub(wchar_t const *s, unsigned int start, size_t len)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	wchar_t	*result;
-	size_t	i;
+	unsigned char		*temp_dst;
+	unsigned const char	*temp_src;
 
-	result = malloc(sizeof(*result) * (len + 1));
-	if (!result)
-		return (result);
-	i = 0;
-	while (i < len)
+	temp_dst = (unsigned char *)dst;
+	temp_src = (unsigned const char *)src;
+	while (n-- != 0)
 	{
-		result[i] = s[start + i];
-		i++;
+		*temp_dst++ = *temp_src++;
 	}
-	result[len] = L'\0';
-	return (result);
+	return (dst);
 }

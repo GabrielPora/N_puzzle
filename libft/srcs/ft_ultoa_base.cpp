@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ultoa.c                                         :+:      :+:    :+:   */
+/*   ft_ultoa_base.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acazuc <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/25 09:43:48 by ggroener          #+#    #+#             */
-/*   Updated: 2016/06/25 11:36:31 by ggroener         ###   ########.fr       */
+/*   Created: 2016/06/25 11:20:57 by ggroener          #+#    #+#             */
+/*   Updated: 2016/06/25 11:40:33 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	get_size(unsigned long long int n)
+static size_t	get_size(unsigned long long int n, char *base)
 {
 	size_t					size;
 
@@ -20,12 +20,12 @@ static size_t	get_size(unsigned long long int n)
 	while (n > 0)
 	{
 		size++;
-		n /= 10;
+		n /= ft_strlen(base);
 	}
 	return (size);
 }
 
-char			*ft_ultoa(unsigned long long int n)
+char			*ft_ultoa_base(unsigned long long int n, char *base)
 {
 	char					*result;
 	size_t					size;
@@ -33,18 +33,20 @@ char			*ft_ultoa(unsigned long long int n)
 	unsigned long long int	i;
 	unsigned long long int	nb;
 
+	if (!base || ft_strlen(base) < 2)
+		return (NULL);
 	if (n == 0)
 		return (ft_strdup("0"));
 	nb = n;
-	size = get_size(n);
-	if (!(result = malloc(sizeof(result) * size)))
+	size = get_size(n, base);
+	if (!(result = (char *)malloc(sizeof(result) * size)))
 		return (result);
 	j = 1;
 	i = 1;
 	while (nb / j > 0)
 	{
-		result[size - i++ - 1] = (nb / j) % 10 + '0';
-		j = j * 10;
+		result[size - i++ - 1] = base[(nb / j) % ft_strlen(base)];
+		j = j * ft_strlen(base);
 	}
 	result[size - 1] = '\0';
 	return (result);

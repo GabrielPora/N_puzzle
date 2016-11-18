@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ltoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_ultoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/05 11:20:57 by ggroener          #+#    #+#             */
-/*   Updated: 2016/06/08 11:40:42 by ggroener         ###   ########.fr       */
+/*   Created: 2016/06/29 09:43:48 by ggroener          #+#    #+#             */
+/*   Updated: 2016/07/01 11:35:42 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	get_size(long long int n, char *base)
+static size_t	get_size(long long int n)
 {
 	size_t					size;
 
@@ -21,12 +21,12 @@ static size_t	get_size(long long int n, char *base)
 	while (n > 0)
 	{
 		size++;
-		n /= ft_strlen(base);
+		n /= 10;
 	}
 	return (size);
 }
 
-char			*ft_ltoa_base(long long int n, char *base)
+char			*ft_ltoa(long long int n)
 {
 	char					*result;
 	size_t					size;
@@ -34,13 +34,11 @@ char			*ft_ltoa_base(long long int n, char *base)
 	unsigned long long int	i;
 	unsigned long long int	nb;
 
-	if (!base || ft_strlen(base) < 2)
-		return (NULL);
 	if (n == 0)
 		return (ft_strdup("0"));
 	nb = n < 0 ? -n : n;
-	size = get_size(n, base);
-	if (!(result = malloc(sizeof(result) * size)))
+	size = get_size(n);
+	if (!(result = (char *)malloc(sizeof(result) * size)))
 		return (result);
 	if (n < 0)
 		result[0] = '-';
@@ -48,8 +46,8 @@ char			*ft_ltoa_base(long long int n, char *base)
 	i = 1;
 	while (nb / j > 0)
 	{
-		result[size - i++ - 1] = base[(nb / j) % ft_strlen(base)];
-		j = j * ft_strlen(base);
+		result[size - i++ - 1] = (nb / j) % 10 + '0';
+		j = j * 10;
 	}
 	result[size - 1] = '\0';
 	return (result);

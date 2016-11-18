@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_state.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/15 06:49:27 by ggroener          #+#    #+#             */
-/*   Updated: 2016/11/17 10:43:52 by ggroener         ###   ########.fr       */
+/*   Created: 2016/06/25 15:16:24 by ggroener          #+#    #+#             */
+/*   Updated: 2016/06/26 07:45:45 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "npuzzle.h"
+#include "libft.h"
 
-t_state *new_state()
+void	ft_lstadd(t_list **alst, t_list *n)
 {
-	t_state *state;
-
-	if (!(state = malloc(sizeof(*state))))
-	{
-		ft_putendl_fd("npuzzle: failed to malloc new state", 2);
-		exit(EXIT_FAILURE);
-	}
-	ft_bzero(state, sizeof(*state));
-	state->pred = NULL;
-	state->g = 0;
-	return (state);
+	n->next = *alst;
+	*alst = n;
 }

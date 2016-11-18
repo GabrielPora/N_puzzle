@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_nbr_ld.c                                 :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/05 13:35:55 by ggroener          #+#    #+#             */
-/*   Updated: 2016/07/04 17:11:37 by ggroener         ###   ########.fr       */
+/*   Created: 2016/05/14 11:13:25 by ggroener          #+#    #+#             */
+/*   Updated: 2016/05/22 15:31:51 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_printf_nbr_ld(long n)
+void	*ft_memccpy(void *s1, const void *s2, int c, size_t n)
 {
-	if (n == -9223372036854775807)
-		ft_printf_str("-9223372036854775807");
-	else if (n < 0)
+	unsigned char		*tmp_s1;
+	unsigned const char	*tmp_s2;
+
+	tmp_s1 = (unsigned char *)s1;
+	tmp_s2 = (unsigned char const *)s2;
+	while (n-- != 0)
 	{
-		n *= -1;
-		ft_printf_char('-');
-		ft_printf_nbr_ld(n);
+		if (*tmp_s2 != (unsigned char)c)
+		{
+			*tmp_s1++ = *tmp_s2++;
+		}
+		else
+		{
+			*tmp_s1++ = *tmp_s2++;
+			return (tmp_s1);
+		}
 	}
-	else if (n >= 10)
-	{
-		ft_printf_nbr_ld(n / 10);
-		ft_printf_nbr_ld(n % 10);
-	}
-	else
-		return (ft_printf_char(48 + n));
-	return (1);
+	return (NULL);
 }

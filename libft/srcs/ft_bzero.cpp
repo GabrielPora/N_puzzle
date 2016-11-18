@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/12 07:21:50 by ggroener          #+#    #+#             */
-/*   Updated: 2016/05/14 08:02:05 by ggroener         ###   ########.fr       */
+/*   Created: 2016/05/11 12:12:24 by ggroener          #+#    #+#             */
+/*   Updated: 2016/05/11 16:31:04 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
-	unsigned const char	*temp;
+	unsigned char	*temp;
 
-	temp = s;
+	temp = (unsigned char *)s;
 	while (n-- != 0)
 	{
-		if (*temp == (unsigned char)c)
-			return ((void *)temp);
-		else
-			temp++;
+		*temp = 0;
+		temp++;
 	}
-	return (NULL);
 }

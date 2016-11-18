@@ -16,7 +16,7 @@ static void alloc_puzzle(t_env *env)
 {
 	int i;
 
-	if (!(env->start->puzzle = malloc(sizeof(*env->start->puzzle) * env->size)))
+	if (!(env->start->puzzle = (int **)malloc(sizeof(*env->start->puzzle) * env->size)))
 	{
 		ft_putendl_fd("npuzzle: failed to malloc puzzle", 2);
 		exit(EXIT_FAILURE);
@@ -25,7 +25,7 @@ static void alloc_puzzle(t_env *env)
 	i = 0;
 	while (i < env->size)
 	{
-		if (!(env->start->puzzle[i] = malloc(sizeof(**env->start->puzzle) * env->size)))
+		if (!(env->start->puzzle[i] = (int *)malloc(sizeof(**env->start->puzzle) * env->size)))
 		{
 			ft_putendl_fd("npuzzle: failed to malloc puzzle", 2);
 			exit(EXIT_FAILURE);

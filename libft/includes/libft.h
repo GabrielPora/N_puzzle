@@ -23,6 +23,9 @@
 # include <stdarg.h>
 # include <string.h>
 
+# include <iostream>
+using namespace std;
+
 # define BUFF_SIZE 32
 # define HEX "0123456789abcdef"
 
@@ -111,7 +114,7 @@ void				ft_free_2d_array(char ***str);
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
-void				ft_lstadd(t_list **alst, t_list *new);
+void				ft_lstadd(t_list **alst, t_list *n);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int					ft_bufferreader(const int fd, char **line);

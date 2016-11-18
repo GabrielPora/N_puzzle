@@ -6,13 +6,13 @@ char *get_next_line2(int fd)
 	char *result;
 	char *buff;
 
-	if (!(buff = malloc(sizeof(*buff) * 2)))
+	if (!(buff = (char *)malloc(sizeof(*buff) * 2)))
 	{
 		ft_putendl_fd("npuzzle: can't malloc", 2);
 		exit(EXIT_FAILURE);
 	}
 	ft_bzero(buff, 2);
-	if (!(result = malloc(sizeof(*result))))
+	if (!(result = (char *)malloc(sizeof(*result))))
 	{
 		ft_putendl_fd("npuzzle: can't malloc", 2);
 		exit(EXIT_FAILURE);

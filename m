@@ -20,44 +20,44 @@ INCLUDES_PATH = includes/
 
 SRCS_PATH = srcs/
 
-SRCS_NAME = main.cpp \
-			get_next_line.cpp \
-			read_file.cpp \
-			valid_int.cpp \
-			dump_state.cpp \
-			push_list_state.cpp \
-			remove_list_state.cpp \
-			astar.cpp \
-			new_state.cpp \
-			build_end.cpp \
-			new_size_state.cpp \
-			equals_state.cpp \
-			list_contents_state.cpp \
-			free_list_state.cpp \
-			free_state.cpp \
-			get_list_state.cpp \
-			expend_state.cpp \
-			copy_state.cpp \
-			manhattan.cpp \
-			generate_random.cpp \
-			is_solvable.cpp \
-			timing.cpp \
-			print_solution.cpp \
-			size_list_state.cpp \
-			misplaced.cpp \
-			row_column.cpp \
-			cal_score_state.cpp \
-			cost_state.cpp \
-			push_closed_tree.cpp \
-			get_closed_tree.cpp \
-			remove_closed_tree.cpp \
-			get_score.cpp \
+SRCS_NAME = main.c \
+			get_next_line.c \
+			read_file.c \
+			valid_int.c \
+			dump_state.c \
+			push_list_state.c \
+			remove_list_state.c \
+			astar.c \
+			new_state.c \
+			build_end.c \
+			new_size_state.c \
+			equals_state.c \
+			list_contents_state.c \
+			free_list_state.c \
+			free_state.c \
+			get_list_state.c \
+			expend_state.c \
+			copy_state.c \
+			manhattan.c \
+			generate_random.c \
+			is_solvable.c \
+			timing.c \
+			print_solution.c \
+			size_list_state.c \
+			misplaced.c \
+			row_column.c \
+			cal_score_state.c \
+			cost_state.c \
+			push_closed_tree.c \
+			get_closed_tree.c \
+			remove_closed_tree.c \
+			get_score.c \
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 
 OBJS_PATH = objs/
 
-OBJS_NAME = $(SRCS_NAME:.cpp=.o)
+OBJS_NAME = $(SRCS_NAME:.c=.o)
 
 OBJS = $(addprefix $(OBJS_PATH), $(OBJS_NAME))
 
@@ -100,7 +100,7 @@ $(NAME): $(OBJS)
 	@clear
 	@$(call colourecho, "Make Done!")
 
-$(OBJS_PATH)%.o: $(SRCS_PATH)%.cpp
+$(OBJS_PATH)%.o: $(SRCS_PATH)%.c
 	@$(call colourecho, " - Compiling $<")
 	@$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $< -I$(INCLUDES_PATH)
 	@$(call colourecho, "Compiling Done!")

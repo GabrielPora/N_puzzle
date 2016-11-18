@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   ft_wstrsub.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/25 15:16:24 by ggroener          #+#    #+#             */
-/*   Updated: 2016/06/26 07:45:45 by ggroener         ###   ########.fr       */
+/*   Created: 2016/06/24 15:17:16 by ggroener          #+#    #+#             */
+/*   Updated: 2016/06/25 15:59:12 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd(t_list **alst, t_list *new)
+wchar_t	*ft_wstrsub(wchar_t const *s, unsigned int start, size_t len)
 {
-	new->next = *alst;
-	*alst = new;
+	wchar_t	*result;
+	size_t	i;
+
+	result = (wchar_t *)malloc(sizeof(*result) * (len + 1));
+	if (!result)
+		return (result);
+	i = 0;
+	while (i < len)
+	{
+		result[i] = s[start + i];
+		i++;
+	}
+	result[len] = L'\0';
+	return (result);
 }

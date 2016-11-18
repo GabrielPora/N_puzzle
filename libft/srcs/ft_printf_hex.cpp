@@ -49,10 +49,12 @@ int		ft_printf_hexa(unsigned long n)
 
 int		ft_printf_ptr(void *n)
 {
-	int	i;
+	int		i;
+	string	tmp1 = "0x0";
+	string	tmp2 = "0x";
 
 	if (n == NULL)
-		return (i = ft_printf_str("0x0"));
-	i = ft_printf_str("0x");
+		return (i = ft_printf_str((char *)tmp1.c_str()));
+	i = ft_printf_str((char *)tmp2.c_str());
 	return (ft_printf_hexa((unsigned long)n) + i);
 }

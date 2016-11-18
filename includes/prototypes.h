@@ -39,7 +39,7 @@ int				size_list_state(t_state_list *lst);
 int				misplaced(t_env *env, t_state *s1, t_state *s2); // changed to improve
 int				row_column(t_env *env, t_state *s1, t_state *s2); // changed to improve
 void			cal_score_state(t_env *env, t_state *state);
-int				weight_state(t_state *old, t_state *new);
+int				weight_state(t_state *old, t_state *n);
 int				get_score(t_env *env, t_state *s1, t_state *s2); // added to get score
 t_state_list	*get_list_state(t_env *env, t_state_list *lst, t_state *state);
 void			push_closed_tree(t_env *env, t_closed_tree *tree, t_state *state); //tree calls

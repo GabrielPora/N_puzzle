@@ -42,7 +42,7 @@ int misplaced(t_env *env, t_state *s1, t_state *s2);
 int row_column(t_env *env, t_state *s1, t_state *s2);
 int get_score(t_env *env, t_state *s1, t_state *s2);
 void cal_score_state(t_env *env, t_state *state);
-int cost_state(t_state *old, t_state *new);
+int cost_state(t_state *old, t_state *n);
 void push_closed_tree(t_env *env, t_closed_tree *tree, t_state *state);
 t_state *get_closed_tree(t_env *env, t_closed_tree *tree, t_state *state);
 void remove_closed_tree(t_env *env, t_closed_tree *tree, t_state *state);

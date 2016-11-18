@@ -20,98 +20,98 @@ INCLUDES_PATH = includes/
 
 SRCS_PATH = srcs/
 
-SRCS_NAME1 = ft_atoi.cpp \
-			ft_bzero.cpp \
-			ft_isalnum.cpp \
-			ft_isalpha.cpp \
-			ft_isascii.cpp \
-			ft_isdigit.cpp \
-			ft_isprint.cpp \
-			ft_itoa.cpp \
-			ft_memalloc.cpp \
-			ft_memccpy.cpp \
-			ft_memchr.cpp \
-			ft_memcmp.cpp \
-			ft_memcpy.cpp \
-			ft_memdel.cpp \
-			ft_memmove.cpp \
-			ft_memset.cpp \
-			ft_putchar.cpp \
-			ft_strsub_free.cpp \
-			ft_strtrim_free.cpp \
-			ft_exit.cpp \
-			ft_free_2d_array.cpp \
+SRCS_NAME1 = ft_atoi.c \
+			ft_bzero.c \
+			ft_isalnum.c \
+			ft_isalpha.c \
+			ft_isascii.c \
+			ft_isdigit.c \
+			ft_isprint.c \
+			ft_itoa.c \
+			ft_memalloc.c \
+			ft_memccpy.c \
+			ft_memchr.c \
+			ft_memcmp.c \
+			ft_memcpy.c \
+			ft_memdel.c \
+			ft_memmove.c \
+			ft_memset.c \
+			ft_putchar.c \
+			ft_strsub_free.c \
+			ft_strtrim_free.c \
+			ft_exit.c \
+			ft_free_2d_array.c \
 
-SRCS_NAME2 = ft_putchar_fd.cpp \
-			ft_putendl.cpp \
-			ft_putendl_fd.cpp \
-			ft_putnbr.cpp \
-			ft_putnbr_fd.cpp \
-			ft_putstr.cpp \
-			ft_putstr_fd.cpp \
-			ft_strcat.cpp \
-			ft_strchr.cpp \
-			ft_strclr.cpp \
-			ft_strcmp.cpp \
-			ft_strcpy.cpp \
-			ft_strdel.cpp \
-			ft_strdup.cpp \
-			ft_strequ.cpp \
-			ft_striter.cpp \
-			ft_striteri.cpp \
-			ft_strjoin.cpp \
-			ft_strlcat.cpp \
-			ft_strlen.cpp \
-			ft_lstnew.cpp \
-			ft_lstdelone.cpp \
-			ft_lstdel.cpp \
+SRCS_NAME2 = ft_putchar_fd.c \
+			ft_putendl.c \
+			ft_putendl_fd.c \
+			ft_putnbr.c \
+			ft_putnbr_fd.c \
+			ft_putstr.c \
+			ft_putstr_fd.c \
+			ft_strcat.c \
+			ft_strchr.c \
+			ft_strclr.c \
+			ft_strcmp.c \
+			ft_strcpy.c \
+			ft_strdel.c \
+			ft_strdup.c \
+			ft_strequ.c \
+			ft_striter.c \
+			ft_striteri.c \
+			ft_strjoin.c \
+			ft_strlcat.c \
+			ft_strlen.c \
+			ft_lstnew.c \
+			ft_lstdelone.c \
+			ft_lstdel.c \
 
-SRCS_NAME3 = ft_strmap.cpp \
-			ft_strmapi.cpp \
-			ft_strncat.cpp \
-			ft_strncmp.cpp \
-			ft_strncpy.cpp \
-			ft_strnequ.cpp \
-			ft_strnew.cpp \
-			ft_strnstr.cpp \
-			ft_strrchr.cpp \
-			ft_strsplit.cpp \
-			ft_strstr.cpp \
-			ft_strsub.cpp \
-			ft_strtrim.cpp \
-			ft_tolower.cpp \
-			ft_toupper.cpp \
-			ft_intlen.cpp \
-			ft_printf_diff.cpp \
-			ft_printf_hex.cpp \
-			ft_printf_long.cpp \
-			ft_printf_nbr_ld.cpp \
-			ft_printf.cpp \
-			ft_strisdigit.cpp \
+SRCS_NAME3 = ft_strmap.c \
+			ft_strmapi.c \
+			ft_strncat.c \
+			ft_strncmp.c \
+			ft_strncpy.c \
+			ft_strnequ.c \
+			ft_strnew.c \
+			ft_strnstr.c \
+			ft_strrchr.c \
+			ft_strsplit.c \
+			ft_strstr.c \
+			ft_strsub.c \
+			ft_strtrim.c \
+			ft_tolower.c \
+			ft_toupper.c \
+			ft_intlen.c \
+			ft_printf_diff.c \
+			ft_printf_hex.c \
+			ft_printf_long.c \
+			ft_printf_nbr_ld.c \
+			ft_printf.c \
+			ft_strisdigit.c \
 
-SRCS_NAME4 = ft_lstadd.cpp \
-			ft_lstiter.cpp \
-			ft_lstmap.cpp \
-			ft_strjoin_free1.cpp \
-			ft_strjoin_free2.cpp \
-			ft_strjoin_free3.cpp \
-			ft_atod.cpp \
-			ft_strcount.cpp \
-			ft_strisdigit.cpp \
-			ft_ltoa.cpp \
-			ft_ultoa.cpp \
-			ft_ltoa_base.cpp \
-			ft_ultoa_base.cpp \
-			ft_putwchar.cpp \
-			ft_putwchar_fd.cpp \
-			ft_putwstr.cpp \
-			ft_putwstr_fd.cpp \
-			ft_wstrlen.cpp \
-			ft_wstrsub.cpp \
-			ft_atol.cpp \
-			ft_putul.cpp \
-			ft_putul_fd.cpp \
-			get_next_line.cpp 
+SRCS_NAME4 = ft_lstadd.c \
+			ft_lstiter.c \
+			ft_lstmap.c \
+			ft_strjoin_free1.c \
+			ft_strjoin_free2.c \
+			ft_strjoin_free3.c \
+			ft_atod.c \
+			ft_strcount.c \
+			ft_strisdigit.c \
+			ft_ltoa.c \
+			ft_ultoa.c \
+			ft_ltoa_base.c \
+			ft_ultoa_base.c \
+			ft_putwchar.c \
+			ft_putwchar_fd.c \
+			ft_putwstr.c \
+			ft_putwstr_fd.c \
+			ft_wstrlen.c \
+			ft_wstrsub.c \
+			ft_atol.c \
+			ft_putul.c \
+			ft_putul_fd.c \
+			get_next_line.c 
 
 SRCS4 = $(addprefix $(SRCS_PATH), $(SRCS_NAME4))
 
@@ -127,7 +127,7 @@ HEADER = 	$(INCLUDES_PATH)libft.h \
 
 OBJS_PATH = objs/
 
-OBJS_NAME = $(SRCS_NAME1:.cpp=.o) $(SRCS_NAME2:.cpp=.o) $(SRCS_NAME3:.cpp=.o) $(SRCS_NAME4:.cpp=.o)
+OBJS_NAME = $(SRCS_NAME1:.c=.o) $(SRCS_NAME2:.c=.o) $(SRCS_NAME3:.c=.o) $(SRCS_NAME4:.c=.o)
 
 OBJS = $(addprefix $(OBJS_PATH), $(OBJS_NAME))
 
@@ -140,7 +140,7 @@ $(NAME): $(OBJS)
 	@clear
 	@echo "Make Done!"
 
-$(OBJS_PATH)%.o: $(SRCS_PATH)%.cpp
+$(OBJS_PATH)%.o: $(SRCS_PATH)%.c
 	@echo " - Compiling $<"
 	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCLUDES_PATH)
 

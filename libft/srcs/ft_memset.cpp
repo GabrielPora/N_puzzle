@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cost_state.c                                     :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/15 13:21:11 by ggroener          #+#    #+#             */
-/*   Updated: 2016/11/15 13:21:12 by ggroener         ###   ########.fr       */
+/*   Created: 2016/05/11 12:06:20 by ggroener          #+#    #+#             */
+/*   Updated: 2016/05/14 11:10:33 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "npuzzle.h"
+#include "libft.h"
 
-int cost_state(t_state *old, t_state *new)
+void	*ft_memset(void *s, int c, size_t len)
 {
-	(void)old;
-	(void)new;
-	return (1);
+	unsigned char	*temp;
+
+	temp = (unsigned char *)s;
+	while (len-- != 0)
+	{
+		*temp = (unsigned char)c;
+		temp++;
+	}
+	return (s);
 }

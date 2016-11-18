@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_printf_nbr_ld.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/11 12:06:20 by ggroener          #+#    #+#             */
-/*   Updated: 2016/05/14 11:10:33 by ggroener         ###   ########.fr       */
+/*   Created: 2016/06/05 13:35:55 by ggroener          #+#    #+#             */
+/*   Updated: 2016/07/04 17:11:37 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *s, int c, size_t len)
+int	ft_printf_nbr_ld(long n)
 {
-	unsigned char	*temp;
+	string	tmp = "-9223372036854775807";
 
-	temp = s;
-	while (len-- != 0)
+	if (n == -9223372036854775807)
+		ft_printf_str((char *)tmp.c_str());
+	else if (n < 0)
 	{
-		*temp = (unsigned char)c;
-		temp++;
+		n *= -1;
+		ft_printf_char('-');
+		ft_printf_nbr_ld(n);
 	}
-	return (s);
+	else if (n >= 10)
+	{
+		ft_printf_nbr_ld(n / 10);
+		ft_printf_nbr_ld(n % 10);
+	}
+	else
+		return (ft_printf_char(48 + n));
+	return (1);
 }

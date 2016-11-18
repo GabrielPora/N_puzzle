@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   new_state.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/11 12:15:07 by ggroener          #+#    #+#             */
-/*   Updated: 2016/05/14 07:55:17 by ggroener         ###   ########.fr       */
+/*   Created: 2016/11/15 06:49:27 by ggroener          #+#    #+#             */
+/*   Updated: 2016/11/17 10:43:52 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "npuzzle.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+t_state *new_state()
 {
-	unsigned char		*temp_dst;
-	unsigned const char	*temp_src;
+	t_state *state;
 
-	temp_dst = dst;
-	temp_src = src;
-	while (n-- != 0)
+	if (!(state = (t_state *)malloc(sizeof(*state))))
 	{
-		*temp_dst++ = *temp_src++;
+		ft_putendl_fd("npuzzle: failed to malloc new state", 2);
+		exit(EXIT_FAILURE);
 	}
-	return (dst);
+	ft_bzero(state, sizeof(*state));
+	state->pred = NULL;
+	state->g = 0;
+	return (state);
 }
