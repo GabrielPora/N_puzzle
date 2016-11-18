@@ -3,33 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/10 09:12:51 by khansman          #+#    #+#             */
-/*   Updated: 2016/05/15 18:05:39 by khansman         ###   ########.fr       */
+/*   Created: 2016/05/10 11:45:16 by ggroener          #+#    #+#             */
+/*   Updated: 2016/05/14 11:26:56 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+size_t	ft_strlcat(char *s1, const char *s2, size_t size)
 {
-	char	*d;
-	char	*s;
-	size_t	k;
+	size_t	i;
+	size_t	j;
+	size_t	res;
 
-	d = (char *)ft_memchr(dst, '\0', size);
-	if (d == NULL)
-		return (size + ft_strlen(src));
-	s = (char *)src;
-	k = (size_t)(d - dst) + ft_strlen(s);
-	while (((size_t)(d - dst) < size - 1) && (*s != '\0'))
-	{
-		*d = *s;
-		d++;
-		s++;
-	}
-	*d = '\0';
-	return (k);
+	i = 0;
+	j = ft_strlen(s1);
+	res = ft_strlen(s2) + j;
+	if (size < j)
+		return (ft_strlen(s2) + size);
+	while (s2[i] && (size > j + 1))
+		s1[j++] = s2[i++];
+	s1[j] = '\0';
+	return (res);
 }

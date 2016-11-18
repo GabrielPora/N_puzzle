@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free2d.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin_free3.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/13 11:06:55 by khansman          #+#    #+#             */
-/*   Updated: 2016/08/13 11:06:59 by khansman         ###   ########.fr       */
+/*   Created: 2016/05/21 09:19:16 by ggroener          #+#    #+#             */
+/*   Updated: 2016/05/21 09:27:47 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-void	ft_free2d(char **arr)
+char	*ft_strjoin_free3(char *s1, char *s2)
 {
-	int		k;
+	char	*result;
 
-	k = 0;
-	if (!arr)
-		return ;
-	while (arr[k] != NULL)
-	{
-		free(arr[k]);
-		k++;
-	}
-	free(arr);
+	result = ft_strjoin(s1, s2);
+	free(s1);
+	free(s2);
+	return (result);
 }

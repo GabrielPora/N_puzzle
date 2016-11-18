@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_die.c                                           :+:      :+:    :+:   */
+/*   ft_strsub_free.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/27 14:08:18 by khansman          #+#    #+#             */
-/*   Updated: 2016/09/27 14:44:29 by khansman         ###   ########.fr       */
+/*   Created: 2016/06/24 13:51:06 by ggroener          #+#    #+#             */
+/*   Updated: 2016/06/24 13:53:26 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_die(char *str)
+char	*ft_strsub_free(char const *s, unsigned int start, size_t len)
 {
-	ft_putstr(str);
-	exit(1);
+	char	*result;
+
+	result = ft_strsub(s, start, len);
+	free((void*)s);
+	return (result);
 }

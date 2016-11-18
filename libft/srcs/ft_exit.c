@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtolower.c                                    :+:      :+:    :+:   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/13 11:38:18 by khansman          #+#    #+#             */
-/*   Updated: 2016/11/13 11:43:15 by khansman         ###   ########.fr       */
+/*   Created: 2016/06/13 15:43:54 by ggroener          #+#    #+#             */
+/*   Updated: 2016/06/14 13:45:46 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtolower(char *str)
+void	ft_exit(char *str, int exit_status)
 {
-	int		k;
-
-	k = -1;
-	if (!str || !*str)
-		return (NULL);
-	while (str[++k])
-		str[k] = ft_tolower(str[k]);
-	return (str);
+	ft_putendl_fd(str, 2);
+	exit(exit_status);
 }

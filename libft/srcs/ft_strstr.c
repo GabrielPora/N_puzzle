@@ -3,31 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/10 09:43:21 by khansman          #+#    #+#             */
-/*   Updated: 2016/05/14 14:14:58 by khansman         ###   ########.fr       */
+/*   Created: 2016/02/09 08:46:19 by ggroener          #+#    #+#             */
+/*   Updated: 2016/05/14 08:37:12 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-char	*ft_strstr(char *big, char *little)
+char	*ft_strstr(const char *s1, const char *s2)
 {
-	int		k;
-	int		l;
+	size_t	count_s2;
+	size_t	count_s1;
 
-	k = 0;
-	if (big[0] == '\0' && little[0] == '\0')
-		return (big);
-	while (big[k] != '\0')
+	count_s2 = 0;
+	count_s1 = 0;
+	while (*(s1 + count_s1))
 	{
-		l = 0;
-		while (little[l] != '\0' && little[l] == big[k + l])
-			l++;
-		if (little[l] == '\0')
-			return (&big[k]);
-		k++;
+		if (count_s2 == ft_strlen(s2))
+			return ((char *)(s1));
+		if (*(s1 + count_s1) != *(s2 + count_s2))
+			return (ft_strstr(s1 + count_s1 + 1, s2));
+		count_s2++;
+		count_s1++;
 	}
+	if (count_s2 == ft_strlen(s2))
+		return ((char *)(s1));
 	return (NULL);
 }

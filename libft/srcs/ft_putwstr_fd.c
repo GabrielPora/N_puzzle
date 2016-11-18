@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_re_malloc.c                                     :+:      :+:    :+:   */
+/*   ft_putwstr_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/09 15:24:49 by khansman          #+#    #+#             */
-/*   Updated: 2016/08/13 11:17:52 by khansman         ###   ########.fr       */
+/*   Created: 2016/07/02 15:42:10 by ggroener          #+#    #+#             */
+/*   Updated: 2016/07/03 07:50:48 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "../includes/libft.h"
+#include "libft.h"
 
-char	*ft_remalloc(char *line, size_t size)
+void	ft_putwstr_fd(wchar_t const *s, int fd)
 {
-	char				*tmp;
+	size_t	i;
 
-	tmp = ft_strnew(size + 50);
-	if (size > 0)
+	i = 0;
+	while (s[i])
 	{
-		tmp = ft_strcpy(tmp, line);
-		free(line);
+		ft_putwchar_fd((wchar_t)(s[i]), fd);
+		i++;
 	}
-	return (tmp);
 }
