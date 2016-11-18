@@ -34,21 +34,21 @@ void generate_random(t_env *env)
 		ft_putendl_fd("npuzzle: size must be between 2 and 255", 2);
 		exit(EXIT_FAILURE);
 	}
-	if (!(env->start->puzzle = (int **)malloc(sizeof(*env->start->puzzle) * env->size)))
+	if (!(env->start->puzzle = (int **)malloc(sizeof(int **) * env->size)))
 	{
 		ft_putendl_fd("npuzzle: failed to malloc", 2);
 		exit(EXIT_FAILURE);
 	}
-	ft_bzero(env->start->puzzle, (sizeof(*env->start->puzzle) * env->size));
+	ft_bzero(env->start->puzzle, (sizeof(int **) * env->size));
 	int i = 0;
 	while (i < env->size)
 	{
-		if (!(env->start->puzzle[i] = (int *)malloc(sizeof(*env->start->puzzle[i]) * env->size)))
+		if (!(env->start->puzzle[i] = (int *)malloc(sizeof(int *) * env->size)))
 		{
 			ft_putendl_fd("npuzzle: failed to malloc", 2);
 			exit(EXIT_FAILURE);
 		}
-		ft_bzero(env->start->puzzle[i], (sizeof(*env->start->puzzle[i]) * env->size));
+		ft_bzero(env->start->puzzle[i], (sizeof(int *) * env->size));
 		int j = 0;
 		while (j < env->size)
 		{
