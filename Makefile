@@ -14,7 +14,9 @@ NAME = npuzzle
 
 CC = g++
 
-CFLAGS = -ltermcap -Ofast -flto -march=native -g3 -g
+CFLAGS = -Wall -Wextra -Werror -Ofast -flto -march=native -g3 -g
+
+CFLAGS2 = -ltermcap
 
 INCLUDES_PATH = includes/
 
@@ -98,7 +100,7 @@ $(NAME): $(OBJS)
 	@Make -C libft
 	@$(call colourecho, " - Making $(NAME)")
 	@clear
-	@$(CC) $(CFLAGS) -o $(NAME) $^ $(LIBRARY) $(INCLUDES) -I$(INCLUDES_PATH)
+	@$(CC) $(CFLAGS2) -o $(NAME) $^ $(LIBRARY) $(INCLUDES) -I$(INCLUDES_PATH)
 	@clear
 	@$(call colourecho, "Make Done!")
 
