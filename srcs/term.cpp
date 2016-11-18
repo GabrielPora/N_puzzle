@@ -11,7 +11,7 @@ void	unexpected_error(int signo) {
 		tputs(tgetstr((char *)"cr", NULL), 0, cursor_do);
 		print("                                                            ");
 		tputs(tgetstr((char *)"cr", NULL), 0, cursor_do);
-		print("\rAn unknowen error occured.\n");
+		print("\rPuzzle is not solvable.\n");
 		exit(0);
 	}
 }
